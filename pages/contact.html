@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Brewhaus Coffee</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- Page Header -->
+<section class="page-header">
+  <div class="container page-header-content text-center">
+    <span class="section-eyebrow">Get in Touch</span>
+    <h1 class="page-title">Contact Us</h1>
+    <p class="page-breadcrumb"><a href="../index.html">Home</a> / Contact</p>
+  </div>
+</section>
+
+<!-- CONTACT MAIN -->
+<section class="section-pad bg-foam">
+  <div class="container">
+    <div class="row g-5">
+      <!-- Info Column -->
+      <div class="col-lg-4 fade-up">
+        <div class="contact-info-card">
+          <h3>Find Us</h3>
+          <div class="contact-detail">
+            <span class="contact-detail-icon">📍</span>
+            <div>
+              <span class="contact-detail-label">Address</span>
+              <span class="contact-detail-value">24 Artisan Lane, SoHo<br>New York, NY 10013</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <span class="contact-detail-icon">📞</span>
+            <div>
+              <span class="contact-detail-label">Phone</span>
+              <span class="contact-detail-value">(212) 555-0187</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <span class="contact-detail-icon">✉️</span>
+            <div>
+              <span class="contact-detail-label">Email</span>
+              <span class="contact-detail-value">hello@brewhaus.coffee</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <span class="contact-detail-icon">📱</span>
+            <div>
+              <span class="contact-detail-label">For Orders</span>
+              <span class="contact-detail-value">orders@brewhaus.coffee</span>
+            </div>
+          </div>
+          <hr style="border-color:rgba(200,147,74,0.2);margin: 1.5rem 0;">
+          <h4 style="color:var(--caramel);font-size:1rem;margin-bottom:1rem;">Business Hours</h4>
+          <table class="hours-table">
+            <tr><td>Monday</td><td>7:00am – 9:00pm</td></tr>
+            <tr><td>Tuesday</td><td>7:00am – 9:00pm</td></tr>
+            <tr><td>Wednesday</td><td>7:00am – 9:00pm</td></tr>
+            <tr><td>Thursday</td><td>7:00am – 9:00pm</td></tr>
+            <tr><td>Friday</td><td>7:00am – 10:00pm</td></tr>
+            <tr><td>Saturday</td><td>8:00am – 10:00pm</td></tr>
+            <tr><td>Sunday</td><td>8:00am – 8:00pm</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Form Column -->
+      <div class="col-lg-8 fade-up">
+        <div style="background:#fff;padding:2.5rem;border-radius:4px;border:1px solid var(--parchment);">
+          <span class="section-eyebrow">Message Us</span>
+          <h2 class="section-title" style="font-size:2rem;">We'd Love to Hear From You</h2>
+          <span class="divider-gold"></span>
+          <p style="color:var(--mocha);margin-top:1rem;margin-bottom:2rem;font-size:0.9rem;">
+            Whether it's a question about our menu, a catering inquiry, feedback about your visit, or just to say hello — we read every message.
+          </p>
+
+          <form id="contact-form" class="form-brewhaus">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label>Full Name *</label>
+                <input type="text" id="c-name" class="form-control" placeholder="Jane Doe" required>
+              </div>
+              <div class="col-md-6">
+                <label>Email Address *</label>
+                <input type="email" id="c-email" class="form-control" placeholder="jane@example.com" required>
+              </div>
+              <div class="col-md-6">
+                <label>Phone Number</label>
+                <input type="tel" id="c-phone" class="form-control" placeholder="(555) 000-0000">
+              </div>
+              <div class="col-md-6">
+                <label>Subject *</label>
+                <select id="c-subject" class="form-select" required>
+                  <option value="" disabled selected>Select a subject</option>
+                  <option>General Inquiry</option>
+                  <option>Order Issue</option>
+                  <option>Catering Request</option>
+                  <option>Wholesale/Partnership</option>
+                  <option>Feedback</option>
+                  <option>Press/Media</option>
+                  <option>Roastery Tour</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label>Message *</label>
+                <textarea id="c-message" class="form-control" rows="5" placeholder="Tell us what's on your mind..." required style="resize:vertical;"></textarea>
+              </div>
+              <div class="col-12">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <input type="checkbox" id="c-newsletter" style="accent-color:var(--caramel);width:16px;height:16px;">
+                  <label for="c-newsletter" style="font-size:0.82rem;color:var(--mocha);text-transform:none;letter-spacing:0;font-weight:400;cursor:pointer;margin:0;">Subscribe to our monthly brew notes newsletter</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <p id="contact-error" class="text-danger small" style="display:none;"></p>
+                <p id="contact-success" style="display:none;color:var(--caramel);font-weight:600;font-size:0.9rem;">✅ Your message has been sent! We'll be in touch within 24 hours.</p>
+                <button type="submit" class="btn-brewhaus">Send Message →</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP + LOCATIONS -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span class="section-eyebrow">3 Locations</span>
+      <h2 class="section-title">Find a Brewhaus Near You</h2>
+      <span class="divider-gold center"></span>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 fade-up">
+        <div style="background:#fff;border:1px solid var(--parchment);border-radius:4px;overflow:hidden;transition:all 0.3s;height:100%;" onmouseover="this.style.boxShadow='0 8px 30px rgba(44,26,14,0.12)';this.style.borderColor='var(--caramel)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--parchment)'">
+          <div style="height:180px;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=80" alt="SoHo" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="padding:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+              <h4 style="font-size:1.1rem;color:var(--espresso);">SoHo Flagship</h4>
+              <span style="background:var(--caramel);color:var(--espresso);font-size:0.65rem;font-weight:700;padding:3px 8px;border-radius:2px;letter-spacing:0.1em;">ROASTERY</span>
+            </div>
+            <p style="font-size:0.85rem;color:var(--mocha);line-height:1.7;">24 Artisan Lane<br>SoHo, NY 10013</p>
+            <p style="font-size:0.78rem;color:var(--mocha);margin-top:0.5rem;"><strong>Hours:</strong> Mon–Fri 7am–9pm · Sat–Sun 8am–10pm</p>
+            <p style="font-size:0.78rem;color:var(--mocha);">📞 (212) 555-0187</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div style="background:#fff;border:1px solid var(--parchment);border-radius:4px;overflow:hidden;transition:all 0.3s;height:100%;" onmouseover="this.style.boxShadow='0 8px 30px rgba(44,26,14,0.12)';this.style.borderColor='var(--caramel)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--parchment)'">
+          <div style="height:180px;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80" alt="Midtown" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="padding:1.5rem;">
+            <h4 style="font-size:1.1rem;color:var(--espresso);margin-bottom:0.5rem;">Midtown West</h4>
+            <p style="font-size:0.85rem;color:var(--mocha);line-height:1.7;">810 Seventh Ave<br>Midtown, NY 10019</p>
+            <p style="font-size:0.78rem;color:var(--mocha);margin-top:0.5rem;"><strong>Hours:</strong> Mon–Fri 6:30am–8pm · Sat 8am–9pm · Sun Closed</p>
+            <p style="font-size:0.78rem;color:var(--mocha);">📞 (212) 555-0242</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div style="background:#fff;border:1px solid var(--parchment);border-radius:4px;overflow:hidden;transition:all 0.3s;height:100%;" onmouseover="this.style.boxShadow='0 8px 30px rgba(44,26,14,0.12)';this.style.borderColor='var(--caramel)'" onmouseout="this.style.boxShadow='';this.style.borderColor='var(--parchment)'">
+          <div style="height:180px;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="Brooklyn" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="padding:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+              <h4 style="font-size:1.1rem;color:var(--espresso);">Williamsburg</h4>
+              <span style="background:var(--espresso);color:var(--cream);font-size:0.65rem;font-weight:700;padding:3px 8px;border-radius:2px;letter-spacing:0.1em;">NEW</span>
+            </div>
+            <p style="font-size:0.85rem;color:var(--mocha);line-height:1.7;">145 Bedford Ave<br>Brooklyn, NY 11211</p>
+            <p style="font-size:0.78rem;color:var(--mocha);margin-top:0.5rem;"><strong>Hours:</strong> Mon–Sun 8am–10pm</p>
+            <p style="font-size:0.78rem;color:var(--mocha);">📞 (718) 555-0311</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simple map embed placeholder -->
+    <div style="margin-top:3rem;border-radius:4px;overflow:hidden;border:1px solid var(--parchment);" class="fade-up">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.4!2d-74.003!3d40.723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSoHo%2C%20New%20York!5e0!3m2!1sen!2sus!4v1234567890"
+        width="100%" height="380" style="border:0;display:block;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  document.getElementById('nav-placeholder').innerHTML = BrewhausNav();
+  document.getElementById('footer-placeholder').innerHTML = BrewhausFooter();
+
+  $(document).ready(function () {
+    $('#contact-form').on('submit', function (e) {
+      e.preventDefault();
+      const name = $('#c-name').val().trim();
+      const email = $('#c-email').val().trim();
+      const msg = $('#c-message').val().trim();
+      if (!name || !email || !msg) {
+        $('#contact-error').text('Please fill in all required fields.').show();
+        return;
+      }
+      $('#contact-error').hide();
+      $('#contact-success').show();
+      this.reset();
+      showToast('Message sent! We\'ll be in touch soon. ☕');
+    });
+  });
+</script>
+</body>
+</html>

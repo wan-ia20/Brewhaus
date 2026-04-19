@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews — Brewhaus Coffee</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- Page Header -->
+<section class="page-header">
+  <div class="container page-header-content text-center">
+    <span class="section-eyebrow">Customer Reviews</span>
+    <h1 class="page-title">What Our Guests Say</h1>
+    <p class="page-breadcrumb"><a href="../index.html">Home</a> / Reviews</p>
+  </div>
+</section>
+
+<!-- RATING SUMMARY -->
+<section class="section-pad-sm bg-foam">
+  <div class="container">
+    <div class="row g-4 align-items-center justify-content-center fade-up">
+      <div class="col-md-4 text-center">
+        <div style="font-family:'Playfair Display',serif;font-size:5rem;font-weight:700;color:var(--caramel);line-height:1;">4.9</div>
+        <div style="font-size:1.5rem;color:var(--caramel);margin:0.3rem 0;">★★★★★</div>
+        <div style="font-size:0.8rem;color:var(--mocha);">Based on 847 verified reviews</div>
+      </div>
+      <div class="col-md-5">
+        <div class="rating-bar-row mb-2">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;">
+            <span style="font-size:0.8rem;color:var(--mocha);white-space:nowrap;width:30px;">5 ★</span>
+            <div style="flex:1;background:var(--parchment);border-radius:2px;height:8px;overflow:hidden;">
+              <div style="background:var(--caramel);height:100%;width:88%;"></div>
+            </div>
+            <span style="font-size:0.78rem;color:var(--mocha);white-space:nowrap;width:35px;">88%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;">
+            <span style="font-size:0.8rem;color:var(--mocha);white-space:nowrap;width:30px;">4 ★</span>
+            <div style="flex:1;background:var(--parchment);border-radius:2px;height:8px;overflow:hidden;">
+              <div style="background:var(--caramel);height:100%;width:9%;"></div>
+            </div>
+            <span style="font-size:0.78rem;color:var(--mocha);white-space:nowrap;width:35px;">9%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;">
+            <span style="font-size:0.8rem;color:var(--mocha);white-space:nowrap;width:30px;">3 ★</span>
+            <div style="flex:1;background:var(--parchment);border-radius:2px;height:8px;overflow:hidden;">
+              <div style="background:var(--caramel);height:100%;width:2%;"></div>
+            </div>
+            <span style="font-size:0.78rem;color:var(--mocha);white-space:nowrap;width:35px;">2%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;">
+            <span style="font-size:0.8rem;color:var(--mocha);white-space:nowrap;width:30px;">2 ★</span>
+            <div style="flex:1;background:var(--parchment);border-radius:2px;height:8px;overflow:hidden;">
+              <div style="background:var(--caramel);height:100%;width:0.5%;"></div>
+            </div>
+            <span style="font-size:0.78rem;color:var(--mocha);white-space:nowrap;width:35px;">0.5%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-size:0.8rem;color:var(--mocha);white-space:nowrap;width:30px;">1 ★</span>
+            <div style="flex:1;background:var(--parchment);border-radius:2px;height:8px;overflow:hidden;">
+              <div style="background:var(--caramel);height:100%;width:0.5%;"></div>
+            </div>
+            <span style="font-size:0.78rem;color:var(--mocha);white-space:nowrap;width:35px;">0.5%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBMIT REVIEW SECTION -->
+<section style="background: var(--espresso); padding: 3rem 0;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center fade-up">
+        <div id="auth-review-gate">
+          <h3 style="font-family:'Playfair Display',serif;color:var(--cream);font-size:1.6rem;margin-bottom:0.5rem;">Share Your Experience</h3>
+          <p style="color:rgba(245,239,224,0.65);font-size:0.9rem;margin-bottom:1.5rem;">You must be signed in to leave a review.</p>
+          <button class="btn-brewhaus" data-tab="login" data-bs-toggle="modal" data-bs-target="#authModal">Sign In to Write a Review</button>
+          <p style="color:rgba(245,239,224,0.4);font-size:0.78rem;margin-top:0.8rem;">Don't have an account? <button class="auth-tab-btn" data-tab="register" data-bs-toggle="modal" data-bs-target="#authModal" style="color:var(--caramel);background:none;border:none;font-size:0.78rem;padding:0;cursor:pointer;text-decoration:underline;">Create one free</button></p>
+        </div>
+
+        <div id="review-form-container" style="display:none;">
+          <h3 style="font-family:'Playfair Display',serif;color:var(--cream);font-size:1.6rem;margin-bottom:0.5rem;">Share Your Experience</h3>
+          <p style="color:rgba(245,239,224,0.65);font-size:0.9rem;margin-bottom:1.5rem;">Your review will appear publicly with your name.</p>
+          <form id="review-form" class="form-brewhaus" style="text-align:left;background:rgba(255,255,255,0.05);padding:2rem;border-radius:4px;border:1px solid rgba(200,147,74,0.2);">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label style="color:rgba(245,239,224,0.7);">Your Rating *</label>
+                <div class="star-rating" id="star-input">
+                  <input type="radio" name="rating" id="s5" value="5"><label for="s5">★</label>
+                  <input type="radio" name="rating" id="s4" value="4"><label for="s4">★</label>
+                  <input type="radio" name="rating" id="s3" value="3"><label for="s3">★</label>
+                  <input type="radio" name="rating" id="s2" value="2"><label for="s2">★</label>
+                  <input type="radio" name="rating" id="s1" value="1"><label for="s1">★</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label style="color:rgba(245,239,224,0.7);">Favorite Item</label>
+                <input type="text" id="r-item" class="form-control" placeholder="e.g. Iced Caramel Latte">
+              </div>
+              <div class="col-12">
+                <label style="color:rgba(245,239,224,0.7);">Title</label>
+                <input type="text" id="r-title" class="form-control" placeholder="Sum up your experience" required>
+              </div>
+              <div class="col-12">
+                <label style="color:rgba(245,239,224,0.7);">Your Review *</label>
+                <textarea id="r-text" class="form-control" rows="4" placeholder="Tell us about your visit..." required style="resize:vertical;"></textarea>
+              </div>
+              <div class="col-12">
+                <p id="review-error" class="text-danger small" style="display:none;"></p>
+                <button type="submit" class="btn-brewhaus">Post Review →</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS GRID -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span class="section-eyebrow">Verified Reviews</span>
+      <h2 class="section-title">From Our Community</h2>
+      <span class="divider-gold center"></span>
+    </div>
+    <div class="row g-4" id="reviews-grid">
+      <!-- Seeded reviews rendered by JS below -->
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  document.getElementById('nav-placeholder').innerHTML = BrewhausNav();
+  document.getElementById('footer-placeholder').innerHTML = BrewhausFooter();
+
+  $(document).ready(function () {
+
+    // Seed reviews
+    const seedReviews = [
+      { name: 'Sofia Eriksson', initials: 'SE', rating: 5, title: 'A transcendent cold brew experience', text: 'The nitro cold brew is absolutely phenomenal. I've been to cafes across three continents and Brewhaus holds its own with the very best. The cascading pour alone is worth the trip.', item: 'Nitro Cold Brew', date: 'Dec 12, 2024', verified: true },
+      { name: 'Marcus Kim', initials: 'MK', rating: 5, title: 'My morning ritual, perfected', text: 'My morning ritual starts and ends here. The iced caramel latte is perfect every single time — never too sweet, never watered down. The staff know my order by heart.', item: 'Iced Caramel Latte', date: 'Dec 8, 2024', verified: true },
+      { name: 'Amara Laurent', initials: 'AL', rating: 5, title: 'Finally, sustainability AND great coffee', text: 'Finally a cafe that takes sustainability seriously without compromising on taste. Their almond croissant with a flat white is my weekend salvation. The team is warm and knowledgeable.', item: 'Flat White + Almond Croissant', date: 'Nov 29, 2024', verified: true },
+      { name: 'James O\'Connor', initials: 'JO', rating: 5, title: 'The cortado changed my life', text: 'I never understood why people obsessed over coffee until I had the cortado here. Perfectly balanced, the milk doesn\'t overpower the espresso at all. I\'m a convert.', item: 'Cortado', date: 'Nov 20, 2024', verified: true },
+      { name: 'Priya Sharma', initials: 'PS', rating: 4, title: 'Exceptional quality, busy weekends', text: 'The coffee is genuinely world-class. The matcha latte is one of the best I\'ve had outside of Japan. Only reason for 4 stars is the weekend wait times — worth it though!', item: 'Iced Matcha Latte', date: 'Nov 15, 2024', verified: true },
+      { name: 'Tom Bergström', initials: 'TB', rating: 5, title: 'The cinnamon roll + americano combo', text: 'Ordered the americano with a cinnamon roll on a rainy Tuesday. This is what happiness tastes like. The cinnamon roll is enormous and the cream cheese icing is restrained but perfect.', item: 'Americano + Cinnamon Roll', date: 'Nov 5, 2024', verified: true },
+    ];
+
+    function renderReviews(reviews) {
+      let html = '';
+      reviews.forEach(r => {
+        const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+        html += `
+          <div class="col-md-6 col-lg-4 fade-up">
+            <div class="testimonial-card">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="stars" style="font-size:0.9rem;">${stars}</div>
+                ${r.verified ? '<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--caramel);font-weight:600;border:1px solid rgba(200,147,74,0.4);padding:2px 6px;border-radius:2px;">✓ Verified</span>' : ''}
+              </div>
+              <p class="testimonial-text">"${r.text}"</p>
+              ${r.item ? `<p style="font-size:0.75rem;color:var(--caramel);font-weight:600;margin-bottom:0.8rem;">☕ ${r.item}</p>` : ''}
+              <div class="testimonial-author">
+                <div class="author-avatar">${r.initials}</div>
+                <div>
+                  <div class="author-name">${r.name}</div>
+                  <div class="author-tag">${r.date}</div>
+                </div>
+              </div>
+            </div>
+          </div>`;
+      });
+      return html;
+    }
+
+    // Load saved reviews from session + seed
+    const savedReviews = JSON.parse(sessionStorage.getItem('bh_reviews') || '[]');
+    const allReviews = [...savedReviews, ...seedReviews];
+    $('#reviews-grid').html(renderReviews(allReviews));
+
+    // Show/hide review form based on auth
+    function updateReviewGate() {
+      if (Auth.isLoggedIn()) {
+        $('#auth-review-gate').hide();
+        $('#review-form-container').show();
+      } else {
+        $('#auth-review-gate').show();
+        $('#review-form-container').hide();
+      }
+    }
+    updateReviewGate();
+    $(document).on('bh-auth-change', updateReviewGate);
+
+    // Submit review
+    $('#review-form').on('submit', function (e) {
+      e.preventDefault();
+      const ratingVal = $('input[name="rating"]:checked').val();
+      if (!ratingVal) { $('#review-error').text('Please select a star rating.').show(); return; }
+      const text = $('#r-text').val().trim();
+      const title = $('#r-title').val().trim();
+      if (!text) { $('#review-error').text('Please write your review.').show(); return; }
+      $('#review-error').hide();
+
+      const user = Auth.current;
+      const newReview = {
+        name: user.name,
+        initials: user.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2),
+        rating: parseInt(ratingVal),
+        title: title || 'A Brewhaus Experience',
+        text: text,
+        item: $('#r-item').val().trim(),
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        verified: true
+      };
+
+      const saved = JSON.parse(sessionStorage.getItem('bh_reviews') || '[]');
+      saved.unshift(newReview);
+      sessionStorage.setItem('bh_reviews', JSON.stringify(saved));
+
+      const updated = [...saved, ...seedReviews];
+      $('#reviews-grid').html(renderReviews(updated));
+      this.reset();
+      showToast('Your review has been posted! Thank you ☕');
+      $('html,body').animate({ scrollTop: $('#reviews-grid').offset().top - 100 }, 600);
+    });
+
+  });
+</script>
+</body>
+</html>

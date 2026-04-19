@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed — Brewhaus Coffee</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="success-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 text-center fade-up">
+        <div class="success-icon">☕</div>
+        <span class="section-eyebrow">Order Confirmed</span>
+        <h1 class="section-title mt-2">Your Coffee is on Its Way!</h1>
+        <span class="divider-gold center"></span>
+        <p style="color:var(--mocha);margin:1.5rem 0;font-size:0.95rem;line-height:1.8;">
+          Thank you for your order! Our team is already crafting your drinks with care. You'll receive a confirmation email shortly with your order details and estimated delivery time.
+        </p>
+
+        <div style="background:#fff;border:1px solid var(--parchment);border-radius:4px;padding:1.5rem 2rem;text-align:left;margin-bottom:2rem;">
+          <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;color:var(--caramel);margin-bottom:1rem;">Order Details</div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem;color:var(--mocha);padding:0.4rem 0;border-bottom:1px solid var(--parchment);">
+            <span>Order Number</span>
+            <span style="font-weight:600;color:var(--espresso);" id="order-num">#BH-000000</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem;color:var(--mocha);padding:0.4rem 0;border-bottom:1px solid var(--parchment);">
+            <span>Estimated Time</span>
+            <span style="font-weight:600;color:var(--espresso);">30–45 minutes</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem;color:var(--mocha);padding:0.4rem 0;">
+            <span>Status</span>
+            <span style="color:var(--caramel);font-weight:600;">⏳ Preparing</span>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="menu.html" class="btn-brewhaus">Order Again →</a>
+          <a href="../index.html" class="btn-brewhaus-outline">Back to Home</a>
+        </div>
+
+        <p style="margin-top:2rem;font-size:0.8rem;color:var(--mocha);opacity:0.7;">
+          Questions about your order? Email <a href="mailto:orders@brewhaus.coffee" style="color:var(--caramel);">orders@brewhaus.coffee</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  document.getElementById('nav-placeholder').innerHTML = BrewhausNav();
+  document.getElementById('footer-placeholder').innerHTML = BrewhausFooter();
+  // Generate random order number
+  const orderNum = '#BH-' + Math.floor(100000 + Math.random() * 900000);
+  document.getElementById('order-num').textContent = orderNum;
+</script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Brewhaus Coffee</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- Checkout -->
+<section class="checkout-section">
+  <div class="container">
+    <div class="text-center mb-4 fade-up">
+      <a href="../index.html" style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--espresso);text-decoration:none;">Brew<span style="color:var(--caramel);">haus</span></a>
+      <p style="font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mocha);margin-top:0.3rem;">Secure Checkout</p>
+    </div>
+
+    <div id="cart-empty-msg" style="display:none;" class="text-center py-5">
+      <div style="font-size:3rem;margin-bottom:1rem;">🛒</div>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--espresso);">Your cart is empty</h3>
+      <p style="color:var(--mocha);">Add some items before checking out.</p>
+      <a href="menu.html" class="btn-brewhaus mt-3">Browse Menu →</a>
+    </div>
+
+    <div id="checkout-content">
+      <div class="row g-4">
+        <!-- LEFT: Forms -->
+        <div class="col-lg-7 fade-up">
+
+          <!-- Guest Notice -->
+          <div id="guest-notice" style="background:rgba(200,147,74,0.08);border:1px solid rgba(200,147,74,0.25);border-radius:4px;padding:1rem 1.3rem;margin-bottom:1.5rem;font-size:0.85rem;color:var(--mocha);">
+            🛍️ Ordering as a <strong>guest</strong>.
+            <button class="auth-btn-nav" data-tab="login" data-bs-toggle="modal" data-bs-target="#authModal" style="border:none;background:none;color:var(--caramel);font-weight:600;cursor:pointer;font-size:0.85rem;padding:0 0 0 6px;text-decoration:underline;">Sign in for faster checkout</button>
+          </div>
+
+          <!-- Step 1: Delivery -->
+          <div class="checkout-box mb-4">
+            <div class="checkout-step-title">
+              <span class="step-number">1</span>
+              Delivery Information
+            </div>
+            <form id="delivery-form" class="form-brewhaus">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label>First Name *</label>
+                  <input type="text" id="d-fname" class="form-control" placeholder="Jane" required>
+                </div>
+                <div class="col-md-6">
+                  <label>Last Name *</label>
+                  <input type="text" id="d-lname" class="form-control" placeholder="Doe" required>
+                </div>
+                <div class="col-12">
+                  <label>Email Address *</label>
+                  <input type="email" id="d-email" class="form-control" placeholder="jane@example.com" required>
+                </div>
+                <div class="col-md-6">
+                  <label>Phone Number *</label>
+                  <input type="tel" id="d-phone" class="form-control" placeholder="(555) 000-0000" required>
+                </div>
+                <div class="col-md-6">
+                  <label>City *</label>
+                  <input type="text" id="d-city" class="form-control" placeholder="New York" required>
+                </div>
+                <div class="col-12">
+                  <label>Street Address *</label>
+                  <input type="text" id="d-street" class="form-control" placeholder="123 Main Street, Apt 4B" required>
+                </div>
+                <div class="col-md-4">
+                  <label>State</label>
+                  <input type="text" id="d-state" class="form-control" value="NY">
+                </div>
+                <div class="col-md-4">
+                  <label>ZIP Code *</label>
+                  <input type="text" id="d-zip" class="form-control" placeholder="10013" required>
+                </div>
+                <div class="col-md-4">
+                  <label>Delivery Type</label>
+                  <select id="d-type" class="form-select" onchange="updateDelivery()">
+                    <option value="0">Pickup (Free)</option>
+                    <option value="3.99" selected>Standard ($3.99)</option>
+                    <option value="7.99">Express ($7.99)</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label>Order Notes (optional)</label>
+                  <textarea id="d-notes" class="form-control" rows="2" placeholder="Extra napkins, specific instructions..."></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Step 2: Payment -->
+          <div class="checkout-box">
+            <div class="checkout-step-title">
+              <span class="step-number">2</span>
+              Payment Method
+            </div>
+            <div class="row g-3 mb-3">
+              <div class="col-12">
+                <div class="payment-option" id="pay-cod" onclick="selectPayment('cod')">
+                  <span class="payment-icon">💵</span>
+                  <div>
+                    <div class="payment-label">Cash on Delivery</div>
+                    <div class="payment-desc">Pay when your order arrives. Only available for delivery orders.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="payment-option selected" id="pay-card" onclick="selectPayment('card')">
+                  <span class="payment-icon">💳</span>
+                  <div>
+                    <div class="payment-label">Credit / Debit Card</div>
+                    <div class="payment-desc">Visa, Mastercard, Amex, Discover. Secured by 256-bit SSL encryption.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Form -->
+            <div id="card-form-section" class="form-brewhaus">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label>Cardholder Name *</label>
+                  <input type="text" id="card-name" class="form-control" placeholder="Jane M. Doe">
+                </div>
+                <div class="col-12">
+                  <label>Card Number *</label>
+                  <div class="card-input-group">
+                    <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19">
+                    <div class="card-icons">💳</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label>Expiry Date *</label>
+                  <input type="text" id="card-expiry" class="form-control" placeholder="MM / YY" maxlength="7">
+                </div>
+                <div class="col-md-6">
+                  <label>CVV *</label>
+                  <input type="text" id="card-cvv" class="form-control" placeholder="•••" maxlength="4">
+                </div>
+              </div>
+            </div>
+
+            <!-- COD Info -->
+            <div id="cod-info-section" style="display:none;background:rgba(200,147,74,0.06);border:1px solid rgba(200,147,74,0.2);border-radius:4px;padding:1.2rem;margin-top:0.5rem;">
+              <p style="font-size:0.88rem;color:var(--mocha);margin:0;">
+                💵 <strong>Cash on Delivery selected.</strong> Please have the exact amount ready when our delivery partner arrives. Our drivers carry limited change.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Order Summary -->
+        <div class="col-lg-5 fade-up">
+          <div class="checkout-box" style="position:sticky;top:90px;">
+            <div class="checkout-step-title" style="font-size:1.1rem;">
+              <span class="step-number" style="background:var(--espresso);">☕</span>
+              Order Summary
+            </div>
+            <div id="summary-items"></div>
+            <hr style="border-color:var(--parchment);">
+            <div class="d-flex justify-content-between" style="font-size:0.85rem;color:var(--mocha);margin-bottom:0.4rem;">
+              <span>Subtotal</span>
+              <span id="summary-subtotal">$0.00</span>
+            </div>
+            <div class="d-flex justify-content-between" style="font-size:0.85rem;color:var(--mocha);margin-bottom:0.4rem;">
+              <span>Delivery</span>
+              <span id="summary-delivery">$3.99</span>
+            </div>
+            <div class="d-flex justify-content-between" style="font-size:0.85rem;color:var(--mocha);margin-bottom:0.4rem;">
+              <span>Tax (8.875%)</span>
+              <span id="summary-tax">$0.00</span>
+            </div>
+            <div class="order-summary-total">
+              <span>Total</span>
+              <span id="summary-grand">$0.00</span>
+            </div>
+
+            <p id="checkout-error" class="text-danger small mt-2" style="display:none;"></p>
+            <button class="btn-brewhaus w-100 mt-3" id="place-order-btn" style="font-size:0.88rem;justify-content:center;">
+              Place Order →
+            </button>
+            <p style="font-size:0.72rem;color:var(--mocha);text-align:center;margin-top:0.8rem;line-height:1.5;">
+              🔒 Your payment is secured. By placing your order you agree to our Terms & Privacy Policy.
+            </p>
+            <div style="display:flex;gap:0.5rem;justify-content:center;font-size:1.5rem;margin-top:0.5rem;opacity:0.4;">
+              💳 🔒 ✅
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  document.getElementById('nav-placeholder').innerHTML = BrewhausNav();
+  document.getElementById('footer-placeholder').innerHTML = BrewhausFooter();
+
+  let selectedPayment = 'card';
+  let deliveryFee = 3.99;
+
+  function selectPayment(type) {
+    selectedPayment = type;
+    $('#pay-cod, #pay-card').removeClass('selected');
+    $(`#pay-${type}`).addClass('selected');
+    if (type === 'card') {
+      $('#card-form-section').show();
+      $('#cod-info-section').hide();
+    } else {
+      $('#card-form-section').hide();
+      $('#cod-info-section').show();
+    }
+  }
+
+  function updateDelivery() {
+    deliveryFee = parseFloat($('#d-type').val());
+    renderSummary();
+  }
+
+  window.updateDelivery = updateDelivery;
+  window.selectPayment = selectPayment;
+
+  function renderSummary() {
+    const items = Cart.items;
+    if (items.length === 0) {
+      $('#checkout-content').hide();
+      $('#cart-empty-msg').show();
+      return;
+    }
+    $('#checkout-content').show();
+    $('#cart-empty-msg').hide();
+
+    let html = '';
+    items.forEach(item => {
+      html += `<div class="order-summary-item">
+        <span>${item.name} × ${item.qty}</span>
+        <span>$${(item.price * item.qty).toFixed(2)}</span>
+      </div>`;
+    });
+    $('#summary-items').html(html);
+
+    const subtotal = Cart.getTotal();
+    const tax = subtotal * 0.08875;
+    const grand = subtotal + deliveryFee + tax;
+
+    $('#summary-subtotal').text('$' + subtotal.toFixed(2));
+    $('#summary-delivery').text(deliveryFee === 0 ? 'Free' : '$' + deliveryFee.toFixed(2));
+    $('#summary-tax').text('$' + tax.toFixed(2));
+    $('#summary-grand').text('$' + grand.toFixed(2));
+  }
+
+  // Show user info if logged in
+  $(document).ready(function () {
+    renderSummary();
+
+    if (Auth.isLoggedIn()) {
+      $('#guest-notice').hide();
+      const u = Auth.current;
+      const nameParts = u.name.split(' ');
+      if ($('#d-fname').length) {
+        $('#d-fname').val(nameParts[0] || '');
+        $('#d-lname').val(nameParts[1] || '');
+        $('#d-email').val(u.email || '');
+      }
+    }
+
+    // Card number formatting
+    $('#card-number').on('input', function () {
+      let v = $(this).val().replace(/\D/g, '').slice(0, 16);
+      v = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+      $(this).val(v);
+    });
+
+    $('#card-expiry').on('input', function () {
+      let v = $(this).val().replace(/\D/g, '').slice(0, 4);
+      if (v.length > 2) v = v.slice(0, 2) + ' / ' + v.slice(2);
+      $(this).val(v);
+    });
+
+    // Place order
+    $('#place-order-btn').on('click', function () {
+      const fname = $('#d-fname').val().trim();
+      const email = $('#d-email').val().trim();
+      const phone = $('#d-phone').val().trim();
+      const street = $('#d-street').val().trim();
+      const zip = $('#d-zip').val().trim();
+
+      if (!fname || !email || !phone || !street || !zip) {
+        $('#checkout-error').text('Please fill in all required delivery fields.').show();
+        $('html,body').animate({ scrollTop: 200 }, 400);
+        return;
+      }
+
+      if (selectedPayment === 'card') {
+        const cardName = $('#card-name').val().trim();
+        const cardNum = $('#card-number').val().replace(/\s/g, '');
+        const expiry = $('#card-expiry').val().trim();
+        const cvv = $('#card-cvv').val().trim();
+        if (!cardName || cardNum.length < 16 || !expiry || !cvv) {
+          $('#checkout-error').text('Please complete your card details.').show();
+          return;
+        }
+      }
+      $('#checkout-error').hide();
+
+      // Clear cart and redirect
+      sessionStorage.removeItem('bh_cart');
+      window.location.href = 'order-success.html';
+    });
+  });
+</script>
+</body>
+</html>
